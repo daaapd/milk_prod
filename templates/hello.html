@@ -1,0 +1,38 @@
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type=text/javascript>
+        $(function() {
+          $('a#test').bind('click', function() {
+            $.getJSON('/test',
+                function(data) {
+              //do nothing
+            });
+            return false;
+          });
+        });
+</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Анализ фотографий магазина</title>
+</head>
+<body>
+        <div>
+            Анализ фото:
+            <a href="{{ url_for('index') }}">На главную</a>
+            <a href="{{ url_for('upload_file') }}">Загрузка файлов</a>
+            <a href="{{ url_for('report') }}">Анализ</a>
+            <a href="{{ url_for('uploaded_file') }}">Скачать</a>
+        </div>
+
+<table border="1">
+            <caption>Список файлов загруженных</caption>
+            <tr>
+                <th>имя файла</th>
+            </tr>
+            {% for item in items %}
+                <tr><td>{{ item }}</td></tr>
+            {% endfor %}
+        </table>
+</body>
+</html>
